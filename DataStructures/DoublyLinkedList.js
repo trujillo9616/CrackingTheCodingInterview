@@ -52,18 +52,19 @@ export default class DoublyLinkedList {
     delete(index) {
         if (index >= this.length) return undefined;
 
+        let unwantedNode;
         if (index === 0) {
             let temp = this.head;
             this.head = temp.next;
             this.head.prev = null;
         } else {
             const leader = this.traverseToIndex(index - 1);
-            const unwantedNode = leader.next;
+            if (index === this.length - 1) this.tail = leader;
+            unwantedNode = leader.next;
             leader.next = unwantedNode.next;
-            unwantedNode.next.prev = leader;
-            console.log(this);
-            this.length--;
+            if (index !== this.length - 1) unwantedNode.next.prev = leader;
         }
+        this.length--;
         return this.printList();
     }
 
@@ -86,14 +87,23 @@ export default class DoublyLinkedList {
         }
         return array;
     }
+
+    reverse() {
+        if (this.length < 2) return this.head;
+        let first = this.head;
+        this.tail = this.head;
+        let second = first.next;
+
+        while (second) {
+            const temp = second.next;
+            second.next = first;
+            second.prev = temp;
+            first = second;
+            second = temp;
+        }
+        this.head.prev = this.head.next;
+        this.head.next = null;
+        this.head = first;
+        return this.printList();
+    }
 }
-
-const myDoublyLinkedList = new DoublyLinkedList(10);
-
-myDoublyLinkedList.append(5);
-myDoublyLinkedList.append(16);
-myDoublyLinkedList.prepend(1);
-myDoublyLinkedList.insert(4, 1);
-myDoublyLinkedList.delete(0);
-
-console.log(myDoublyLinkedList.printList());

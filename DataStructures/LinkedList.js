@@ -48,16 +48,20 @@ export default class LinkedList {
     delete(index) {
         if (index >= this.length) return undefined;
 
+        let unwantedNode;
         if (index === 0) {
-            let temp = this.head;
-            this.head = temp.next;
+            unwantedNode = this.head;
+            this.head = unwantedNode.next;
+            unwantedNode.next = null;
         } else {
             const leader = this.traverseToIndex(index - 1);
-            const unwantedNode = leader.next;
+            if (index === this.length - 1) this.tail = leader;
+            unwantedNode = leader.next;
             leader.next = unwantedNode.next;
-            this.length--;
+            unwantedNode.next = null;
         }
-        return this.printList();
+        this.length--;
+        return unwantedNode;
     }
 
     traverseToIndex(index) {
@@ -79,15 +83,21 @@ export default class LinkedList {
         }
         return array;
     }
+
+    reverse() {
+        if (this.length < 2) return this.head;
+        let first = this.head;
+        this.tail = this.head;
+        let second = first.next;
+
+        while (second) {
+            const temp = second.next;
+            second.next = first;
+            first = second;
+            second = temp;
+        }
+        this.head.next = null;
+        this.head = first;
+        return this.printList();
+    }
 }
-
-const myLinkeList = new LinkedList(10);
-
-myLinkeList.append(5);
-myLinkeList.append(16);
-myLinkeList.prepend(1);
-myLinkeList.insert(20, 0);
-myLinkeList.delete(1);
-
-
-console.log(myLinkeList.printList());
