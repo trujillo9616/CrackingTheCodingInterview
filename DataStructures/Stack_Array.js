@@ -1,4 +1,4 @@
-class Stack {
+export default class Stack {
     constructor(value) {
         this.stack = [];
         this.top = null;

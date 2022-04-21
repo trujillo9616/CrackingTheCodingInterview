@@ -1,6 +1,6 @@
 import LinkedList from './LinkedList.js';
 
-class Stack {
+export default class Stack {
     constructor(value) {
         this.stack = new LinkedList(value);
         this.top = this.stack.tail;
@@ -8,7 +8,7 @@ class Stack {
     }
 
     peek() {
-        if (this.stack.length) return this.top;
+        if (!this.isEmpty()) return this.top;
     }
 
     push(value) {
