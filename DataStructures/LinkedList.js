@@ -53,6 +53,7 @@ export default class LinkedList {
             unwantedNode = this.head;
             this.head = unwantedNode.next;
             unwantedNode.next = null;
+            if (this.length === 1) this.tail = null;
         } else {
             const leader = this.traverseToIndex(index - 1);
             if (index === this.length - 1) this.tail = leader;
