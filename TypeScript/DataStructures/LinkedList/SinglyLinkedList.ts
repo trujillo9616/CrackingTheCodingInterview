@@ -125,18 +125,19 @@ export default class SinglyLinkedList<T> implements ILinkedList<T> {
 
   public toArray() {
     if (!this.head) return [];
-    const array = new Array<T>(this.length);
+    const array = new Array<T>();
     let currentNode: CustomNode<T> | null = this.head;
+    let idx = 0;
 
-    for (let i = 0; i < this.length; i++) {
-      array[i] = currentNode!.value;
-      currentNode = currentNode!.next;
+    while (currentNode) {
+      array[idx++] = currentNode.value;
+      currentNode = currentNode.next;
     }
 
     return array;
   }
 
   public toString() {
-    return this.toArray().toString();
+    return this.toArray().join(' -> ');
   }
 }
