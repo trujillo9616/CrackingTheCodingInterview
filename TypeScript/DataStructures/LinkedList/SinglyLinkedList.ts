@@ -123,6 +123,18 @@ export default class SinglyLinkedList<T> implements ILinkedList<T> {
     return true;
   }
 
+  public size() {
+    return this.length;
+  }
+
+  public isEmpty() {
+    return this.length === 0;
+  }
+
+  public deleteHead() {
+    return this.remove(0);
+  }
+
   public toArray() {
     if (!this.head) return [];
     const array = new Array<T>();
