@@ -2,7 +2,10 @@
 export { CustomNode } from './Node';
 
 // Linked Lists
-export { SinglyLinkedList } from './LinkedList';
+export { SinglyLinkedList, ILinkedList } from './LinkedList';
 
 // Stacks
-export { StackArray, StackLinkedList } from './Stack';
+export { StackArray, StackLinkedList, IStack } from './Stack';
+
+// Queues
+export { QueueArray, QueueLinkedList, IQueue } from './Queue';

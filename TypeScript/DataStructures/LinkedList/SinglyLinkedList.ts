@@ -1,4 +1,4 @@
-import type { ILinkedList } from './interface';
+import type ILinkedList from './interface';
 import { CustomNode } from '../Node';
 
 export default class SinglyLinkedList<T> implements ILinkedList<T> {

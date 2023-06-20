@@ -1,6 +1,6 @@
 import { CustomNode } from '../Node';
 
-export interface ILinkedList<T> {
+export default interface ILinkedList<T> {
   head: CustomNode<T> | null;
   tail: CustomNode<T> | null;
   length: number;

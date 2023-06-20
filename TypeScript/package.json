@@ -19,5 +19,8 @@
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1"
   }
 }
